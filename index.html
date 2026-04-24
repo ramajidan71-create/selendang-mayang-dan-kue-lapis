@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jajanan Betawi - Selendang Mayang & Kue Lapis</title>
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #4caf50;
+            --bg-color: #fff9f0;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; padding: 40px 20px;
+            text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { margin: 10px 0 0; opacity: 0.9; }
+
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        .card {
+            background: white; border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            overflow: hidden; margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+        .card-image {
+            width: 100%;
+            height: 300px; 
+            object-fit: cover; 
+            display: block;
+        }
+
+        .card-content { padding: 25px; }
+        h2 { color: var(--primary-color); margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: #555; font-size: 1.1rem; margin-top: 20px; margin-bottom: 5px; }
+        
+        ul { padding-left: 20px; margin-bottom: 15px; }
+        ul li { margin-bottom: 8px; }
+        
+        .origin-text {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+            background: #fdf2f5;
+            padding: 10px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .order-form { display: flex; flex-direction: column; }
+        label { font-weight: bold; margin-bottom: 8px; font-size: 0.9rem; }
+        input, select, textarea {
+            margin-bottom: 18px; padding: 12px 15px;
+            border: 2px solid #eee; border-radius: 10px;
+            font-size: 16px; transition: 0.3s;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--primary-color); outline: none; }
+
+        button {
+            background-color: #25d366; color: white;
+            padding: 18px; border: none; border-radius: 12px;
+            font-size: 18px; font-weight: bold;
+            cursor: pointer; transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        button:hover { background-color: #128c7e; transform: translateY(-2px); }
+
+        .footer { text-align: center; padding: 30px; color: #888; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Warung Abang None</h1>
+    <p>Tradisi Manis dalam Setiap Gigitan</p>
+</header>
+
+<div class="container">
+    
+    <div class="benefits-grid">
+        <section class="card">
+            <img src="selendang-mayang.jpg" alt="Es Selendang Mayang Asli" class="card-image">
+            <div class="card-content">
+                <h2>Es Selendang Mayang</h2>
+                
+                <h3>Asal-Usul:</h3>
+                <p class="origin-text">Minuman ini sudah ada sejak era kolonial 1940-an. Nama "Selendang" diambil dari lapisan warna-warni kue yang cantik seperti selendang, sementara "Mayang" berarti manis dan kenyal.</p>
+                
+                <h3>Manfaat:</h3>
+                <ul>
+                    <li>Melepas dahaga seketika</li>
+                    <li>Sumber energi (karbohidrat)</li>
+                    <li>Mendinginkan suhu tubuh</li>
+                    <li>Tekstur kenyal yang memuaskan</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card">
+            <img src="kue-lapis.jpg" alt="Kue Lapis Asli" class="card-image">
+            <div class="card-content">
+                <h2>Kue Lapis</h2>
+                
+                <h3>Asal-Usul:</h3>
+                <p class="origin-text">Merupakan jajanan akulturasi budaya Tionghoa dan Betawi. Teksturnya yang berlapis-lapis melambangkan kemakmuran dan keberuntungan yang datang terus menerus.</p>
+                
+                <h3>Manfaat:</h3>
+                <ul>
+                    <li>Bebas gluten (dari tepung beras)</li>
+                    <li>Energi tambahan dari santan</li>
+                    <li>Tanpa pemanis buatan</li>
+                    <li>Tekstur lembut & manis alami</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <section class="card">
+        <div class="card-content">
+            <h2>Formulir Pemesanan</h2>
+            <div class="order-form">
+                <label>Nama Lengkap:</label>
+                <input type="text" id="nama" placeholder="Masukkan nama kamu" required>
+                
+                <label>Kelas:</label>
+                <input type="text" id="kelas" placeholder="Contoh: X PPLG 1" required>
+                
+                <label>Nomor HP / WhatsApp:</label>
+                <input type="number" id="hp" placeholder="08xxxxxxxxxx" required>
+
+                <label>Pilih Produk:</label>
+                <select id="produk">
+                    <option value="Es Selendang Mayang">Es Selendang Mayang</option>
+                    <option value="Kue Lapis">Kue Lapis</option>
+                    <option value="Paket Lengkap">Paket Lengkap (Keduanya)</option>
+                </select>
+
+                <label>Jumlah Pesanan:</label>
+                <input type="number" id="jumlah" value="1" min="1">
+
+                <label>Catatan Tambahan:</label>
+                <textarea id="catatan" placeholder="Contoh: Gulanya banyakin"></textarea>
+
+                <button onclick="kirimWhatsApp()">Kirim Pesanan (WhatsApp)</button>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="footer">
+    &copy; 2026 Kokurikuler Kewirausahaan Sekolah SMK Negeri 22 Jakarta
+</div>
+
+<script>
+    function kirimWhatsApp() {
+        const nama = document.getElementById('nama').value;
+        const kelas = document.getElementById('kelas').value;
+        const hp = document.getElementById('hp').value;
+        const produk = document.getElementById('produk').value;
+        const jumlah = document.getElementById('jumlah').value;
+        const catatan = document.getElementById('catatan').value;
+
+        // GANTI NOMOR DI BAWAH DENGAN NOMOR WA KAMU (AWALAN 62)
+        const noTujuan = "6281290489329"; 
+
+        if(!nama || !kelas || !hp) {
+            alert("Mohon isi Nama, Kelas, dan No HP kamu!");
+            return;
+        }
+
+        const pesan = `*PESANAN BARU - JAJANAN BETAWI*%0A` +
+                      `----------------------------------%0A` +
+                      `*Nama:* ${nama}%0A` +
+                      `*Kelas:* ${kelas}%0A` +
+                      `*No HP:* ${hp}%0A` +
+                      `*Produk:* ${produk}%0A` +
+                      `*Jumlah:* ${jumlah}%0A` +
+                      `*Catatan:* ${catatan || "-"}%0A` +
+                      `----------------------------------%0A` +
+                      `Mohon segera diproses ya!`;
+
+        window.open(`https://api.whatsapp.com/send?phone=${noTujuan}&text=${pesan}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
