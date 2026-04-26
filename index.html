@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jajanan Betawi - Selendang Mayang & Kue Lapis</title>
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #4caf50;
+            --bg-color: #fff9f0;
+            --text-color: #333;
+            /* Perubahan: Warna Price Tag dibuat lebih menyala */
+            --price-tag-bg: #ff5722; 
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; padding: 40px 20px;
+            text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { margin: 10px 0 0; opacity: 0.9; }
+
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        
+        .card {
+            background: white; border-radius: 20px;
+            /* Perubahan: Bayangan awal dibuat lebih halus */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden; margin-bottom: 30px;
+            position: relative; /* Penting untuk posisi price tag */
+            transition: all 0.4s ease-in-out; /* Perubahan: Transisi lebih smooth */
+        }
+
+        /* PERUBAHAN: Efek Interaktif Saat Hover pada Kartu */
+        .card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.2); /* Bayangan merah muda saat hover */
+        }
+
+        .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+        .card-image {
+            width: 100%;
+            height: 280px; 
+            object-fit: cover; 
+            display: block;
+        }
+
+        .card-content { padding: 25px; }
+        h2 { color: var(--primary-color); margin: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        
+        /* ----------------------------------------------------------- */
+        /* PERUBAHAN UTAMA: Desain Logo Harga (Price Tag) yang Menarik */
+        /* ----------------------------------------------------------- */
+        .price {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9800, #ff5722); /* Gradasi oranye */
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px 10px 50px 10px; /* Bentuk unik */
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-top: 15px;
+            position: relative;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Menambahkan Efek Lubang Label Gantung */
+        .price::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* Perubahan: Text harga sedikit digeser agar tidak kena 'lubang' */
+        .price-text {
+            margin-left: 10px;
+        }
+
+        /* Perubahan: Efek Harga Berdenyut Saat Kartu di-hover */
+        .card:hover .price {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+        }
+        /* ----------------------------------------------------------- */
+
+        h3 { color: #555; font-size: 1.1rem; margin-top: 20px; margin-bottom: 5px; }
+        
+        ul { padding-left: 20px; margin-bottom: 15px; }
+        ul li { margin-bottom: 8px; }
+        
+        .origin-text {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+            background: #fdf2f5;
+            padding: 12px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .order-form { display: flex; flex-direction: column; }
+        label { font-weight: bold; margin-bottom: 8px; font-size: 0.9rem; color: #555; }
+        input, select, textarea {
+            margin-bottom: 18px; padding: 14px 15px;
+            border: 2px solid #eee; border-radius: 12px;
+            font-size: 16px; transition: 0.3s;
+            background-color: #fafafa;
+        }
+        input:focus, select:focus, textarea:focus { 
+            border-color: var(--primary-color); 
+            outline: none; 
+            background-color: white;
+            box-shadow: 0 0 10px rgba(233, 30, 99, 0.1);
+        }
+
+        button {
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: white;
+            padding: 18px; border: none; border-radius: 15px;
+            font-size: 18px; font-weight: bold;
+            cursor: pointer; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover { 
+            background: linear-gradient(45deg, #128c7e, #25d366);
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .footer { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; background-color: white; margin-top: 30px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Warung Abang None</h1>
+    <p>Tradisi Manis dalam Setiap Gigitan</p>
+</header>
+
+<div class="container">
+    
+    <div class="benefits-grid">
+        <section class="card">
+            <img src="selendang-mayang.jpg" alt="Es Selendang Mayang Asli" class="card-image">
+            <div class="card-content">
+                <h2>Es Selendang Mayang</h2>
+                <div class="price">
+                    <span class="price-text">Rp 13.000,00</span>
+                </div>
+                
+                <h3>Asal-Usul:</h3>
+                <p class="origin-text">Minuman ini sudah ada sejak era kolonial 1940-an. Nama "Selendang" diambil dari lapisan warna-warni yang cantik, sementara "Mayang" berarti manis dan kenyal.</p>
+                
+                <h3>Manfaat:</h3>
+                <ul>
+                    <li>Melepas dahaga seketika</li>
+                    <li>Sumber energi (karbohidrat)</li>
+                    <li>Mendinginkan suhu tubuh</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card">
+            <img src="kue-lapis.jpg" alt="Kue Lapis Asli" class="card-image">
+            <div class="card-content">
+                <h2>Kue Lapis</h2>
+                <div class="price">
+                    <span class="price-text">Rp 3.000,00</span>
+                </div>
+                
+                <h3>Asal-Usul:</h3>
+                <p class="origin-text">Akulturasi budaya Tionghoa dan Betawi. Tekstur berlapis melambangkan kemakmuran dan keberuntungan yang berlanjut.</p>
+                
+                <h3>Manfaat:</h3>
+                <ul>
+                    <li>Bebas gluten (tepung beras)</li>
+                    <li>Energi tambahan dari santan</li>
+                    <li>Tekstur lembut & manis alami</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <section class="card">
+        <div class="card-content">
+            <h2>Formulir Pemesanan</h2>
+            <div class="order-form">
+                <label>Nama Lengkap:</label>
+                <input type="text" id="nama" placeholder="Masukkan nama kamu" required>
+                
+                <label>Kelas:</label>
+                <input type="text" id="kelas" placeholder="Contoh: X PPLG 1" required>
+                
+                <label>Nomor HP / WhatsApp:</label>
+                <input type="number" id="hp" placeholder="08xxxxxxxxxx" required>
+
+                <label>Pilih Produk:</label>
+                <select id="produk">
+                    <option value="Es Selendang Mayang" data-harga="13000">Es Selendang Mayang (Rp 13rb)</option>
+                    <option value="Kue Lapis" data-harga="3000">Kue Lapis (Rp 3rb)</option>
+                    <option value="Paket Lengkap" data-harga="16000">Paket Lengkap (Rp 16rb)</option>
+                </select>
+
+                <label>Jumlah Pesanan:</label>
+                <input type="number" id="jumlah" value="1" min="1">
+
+                <label>Catatan Tambahan:</label>
+                <textarea id="catatan" placeholder="Contoh: Es-nya dikit aja"></textarea>
+
+                <button onclick="kirimWhatsApp()">Kirim Pesanan (WhatsApp)</button>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="footer">
+    &copy; 2026 Kokurikuler Kewirausahaan Sekolah SMK Negeri 22 Jakarta
+</div>
+
+<script>
+    function kirimWhatsApp() {
+        const nama = document.getElementById('nama').value;
+        const kelas = document.getElementById('kelas').value;
+        const hp = document.getElementById('hp').value;
+        const produkSelect = document.getElementById('produk');
+        const produk = produkSelect.value;
+        const hargaSatuan = produkSelect.options[produkSelect.selectedIndex].getAttribute('data-harga');
+        const jumlah = document.getElementById('jumlah').value;
+        const catatan = document.getElementById('catatan').value;
+
+        // Hitung Total
+        const totalHarga = parseInt(hargaSatuan) * parseInt(jumlah);
+        const formatTotal = new Intl.NumberFormat('id-ID').format(totalHarga);
+
+        const noTujuan = "6281290489329"; 
+
+        if(!nama || !kelas || !hp) {
+            alert("Mohon isi Nama, Kelas, dan No HP kamu!");
+            return;
+        }
+
+        const pesan = `*PESANAN BARU - JAJANAN BETAWI*%0A` +
+                      `----------------------------------%0A` +
+                      `*Nama:* ${nama}%0A` +
+                      `*Kelas:* ${kelas}%0A` +
+                      `*No HP:* ${hp}%0A` +
+                      `*Produk:* ${produk}%0A` +
+                      `*Jumlah:* ${jumlah}%0A` +
+                      `*Total Bayar:* Rp ${formatTotal}%0A` +
+                      `*Catatan:* ${catatan || "-"}%0A` +
+                      `----------------------------------%0A` +
+                      `Mohon segera diproses ya!`;
+
+        window.open(`https://api.whatsapp.com/send?phone=${noTujuan}&text=${pesan}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
